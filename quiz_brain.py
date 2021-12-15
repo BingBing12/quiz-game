@@ -8,13 +8,14 @@ class QuizBrain:
     def next_question(self):
         current_question = self.question_list[self.question_number]
         self.question_number += 1
-        return f"Q.{self.question_number}: {current_question.text} (True/False): "
+        answer = input(f"Q.{self.question_number}: {current_question.text} (True/False): ")
+        self.check_answer(answer, current_question.answer)
 
     def still_has_questions(self):
         return self.question_number < len(self.question_list)
 
-    def check_answer(self, answer):
-        if self.question_list[self.question_number-1].answer == answer:
+    def check_answer(self, answer, correct_answer):
+        if answer.lower() == correct_answer.lower():
             self.correct_answers += 1
             print(f"Correct, your score is ({self.correct_answers},{self.question_number})")
         else:

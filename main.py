@@ -9,7 +9,6 @@ for question in question_data:
 
 quiz = QuizBrain(question_list)
 while quiz.still_has_questions():
-    question = quiz.next_question()
-    answer = input(question)
-    quiz.check_answer(answer)
+    quiz.next_question()
+
 
